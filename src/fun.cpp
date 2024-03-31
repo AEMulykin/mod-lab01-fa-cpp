@@ -6,9 +6,9 @@
 
 unsigned int faStr1(const std::string& str) {
     unsigned int count = 0;
-    auto isNotSpace = [](char ch) 
+    auto isNotSpace = [](char ch)
     { return !std::isspace(static_cast<unsigned char>(ch)); };
-    auto isDigit = [](char ch) 
+    auto isDigit = [](char ch)
     { return std::isdigit(static_cast<unsigned char>(ch)); };
 
     auto it = str.begin();
