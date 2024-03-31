@@ -6,8 +6,10 @@
 
 unsigned int faStr1(const std::string& str) {
     unsigned int count = 0;
-    auto isNotSpace = [](char ch) { return !std::isspace(static_cast<unsigned char>(ch)); };
-    auto isDigit = [](char ch) { return std::isdigit(static_cast<unsigned char>(ch)); };
+    auto isNotSpace = [](char ch) 
+    { return !std::isspace(static_cast<unsigned char>(ch)); };
+    auto isDigit = [](char ch) 
+    { return std::isdigit(static_cast<unsigned char>(ch)); };
 
     auto it = str.begin();
     while (it != str.end()) {
@@ -24,7 +26,7 @@ unsigned int faStr1(const std::string& str) {
     return count;
 }
 
-// Функция для подсчета слов, 
+// Функция для подсчета слов,
 // начинающихся с заглавной буквы и не содержащих других заглавных букв
 unsigned int faStr2(const std::string& str) {
     unsigned int count = 0; // Счетчик слов
