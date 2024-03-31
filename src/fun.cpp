@@ -76,6 +76,6 @@ unsigned int faStr3(const char* input) {
             isInsideWord = false;
         }
         ++input;
-    }    
+    }
     return totalWords ? totalLength / totalWords : 0;
 }
