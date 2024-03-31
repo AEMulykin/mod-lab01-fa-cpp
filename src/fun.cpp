@@ -3,24 +3,20 @@
 #include <cctype>
 #include <string>
 #include <algorithm>
-#include <functional>
 
-// Функция для подсчета слов в строке, которые не содержат цифры
 unsigned int faStr1(const std::string& str) {
-    unsigned int count = 0; // Счетчик слов
-    // Лямбда-функции для проверки символов
-    auto isNotSpace = [](char ch) { return !std::isspace(ch); };
-    auto isDigit = [](char ch) { return std::isdigit(ch); };
+    unsigned int count = 0;
+    auto isNotSpace = [](char ch) { return !std::isspace(static_cast<unsigned char>(ch)); };
+    auto isDigit = [](char ch) { return std::isdigit(static_cast<unsigned char>(ch)); };
 
     auto it = str.begin();
     while (it != str.end()) {
-        // Находим начало слова
         it = std::find_if(it, str.end(), isNotSpace);
-        // Находим конец слова
-        auto wordEnd = std::find_if(it, str.end(), std::isspace);
-        // Проверяем, есть ли цифры в слове
+        auto wordEnd = std::find_if(it, str.end(), [](char ch) {
+            return std::isspace(static_cast<unsigned char>(ch));
+        });
         if (it != wordEnd && std::none_of(it, wordEnd, isDigit)) {
-            ++count; // Увеличиваем счетчик, если слово не содержит цифр
+            ++count;
         }
         it = wordEnd;
     }
